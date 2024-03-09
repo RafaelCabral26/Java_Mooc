@@ -16,5 +16,19 @@ public class Song {
         return this.artist + ": " + this.name + " (" + this.durationInSeconds + " s)";
     }
 
+    public boolean equals(Object songObject) {
+        if (!(songObject instanceof Song))
+            return false;
+        if (this == songObject) {
+            return true;
+        }
+        Song compared = (Song) songObject;
+        if (this.name.equals(compared.name) &&
+                this.artist.equals(compared.artist) &&
+                this.durationInSeconds == compared.durationInSeconds) {
+            return true;
+        }
+        return false;
+    }
 
 }

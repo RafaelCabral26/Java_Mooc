@@ -1,49 +1,53 @@
 import java.util.Scanner;
 
 public class TextUI {
-    private Scanner scan;
-    private SimpleDictionary dictionary;
+    private Scanner scanner;
+    private SimpleDictionary simpleDict;
 
     public TextUI(Scanner scanner, SimpleDictionary dictionary) {
-        this.scan = scanner;
-        this.dictionary = dictionary;
+        this.scanner = scanner;
+        this.simpleDict = dictionary;
     }
 
     public void start() {
-        while (true) {
-            System.out.println("Command:");
-            String next = scan.nextLine();
-            if (next.equals("end")) {
-                System.out.println("Bye bye!");
-                break;
+        boolean shouldLoop = true;
+         while (shouldLoop) {
+            System.out.print("Command: ");
+
+            String userInput = scanner.nextLine();
+
+            switch (userInput) {
+                case "end":
+                    System.out.println("Bye bye!");
+                    shouldLoop = false;
+                    break;
+                case "add":
+                    //ask for word
+                    System.out.println("Word");
+                    String wordInput = scanner.nextLine();
+                    //ask for its translation
+                    System.out.println("Translation");
+                    String translationInput = scanner.nextLine();
+
+                    //add it to the diction simpleDict
+                    simpleDict.add(wordInput, translationInput);
+                    break;
+                case "search":
+                    System.out.println("To be translated");
+                    String wordToTranslate = scanner.nextLine();
+                    
+                    if (simpleDict.translate(wordToTranslate) == null) {
+                        System.out.println("Word " + wordToTranslate + " was not found");
+                    } else {
+                        System.out.println(simpleDict.translate(wordToTranslate));
+                    }
+
+                    break;
+                default:
+                    System.out.println("Unknown command");
+
             }
 
-            if (next.equals("add")) {
-                System.out.println("Word:");
-                String word = scan.nextLine();
-                System.out.println("Translation:");
-                String translation = scan.nextLine();
-                dictionary.add(word, translation);
-                continue;
-            }
-            if (next.equals("search")) {
-                System.out.println("To be translated:");
-                String toBe = scan.nextLine();
-                if (toBe.equals("end")) {
-                    break;
-                }
-                String translated = dictionary.translate(toBe);
-                if (translated.equals("end")) {
-                    break;
-                }
-                if (translated.isEmpty()) {
-                    System.out.println("Word (" + toBe + ") was not found");
-                    continue;
-                }
-                System.out.println("Translation: " + translated);
-                continue;
-            }
-            System.out.println("Unknown command");
         }
     }
 
