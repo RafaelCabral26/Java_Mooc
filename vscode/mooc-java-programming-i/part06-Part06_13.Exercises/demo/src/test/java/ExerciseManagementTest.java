@@ -7,7 +7,6 @@ import org.junit.Test;
 
 public class ExerciseManagementTest {
     private ExerciseManagement management;
-
     @Before
     public void initialize() {
         management = new ExerciseManagement();
