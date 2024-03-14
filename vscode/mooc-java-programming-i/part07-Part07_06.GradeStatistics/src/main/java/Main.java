@@ -20,5 +20,6 @@ public class Main {
          System.out.println("Point average (all): " + points.average());
          System.out.println("Point average (passing): " + points.averagePassing());
          System.out.println("Pass percentage: " + points.passPercentage());
+         System.out.print(points.gradeDistribution());
     }
 }
