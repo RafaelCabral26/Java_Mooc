@@ -1,8 +1,5 @@
 
-import java.io.File;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class RecipeSearch {
@@ -19,6 +16,9 @@ public class RecipeSearch {
                 System.out.println("Commands:");
                 System.out.println("list - lists the recipes");
                 System.out.println("stop - stops the program");
+                System.out.println("find name - searches recipes by name");
+                System.out.println("find cooking time - searches recipes by cooking time");
+                System.out.println("find ingredient - searches recipes by ingredient");
                 System.out.println();
                 System.out.println("Enter command:");
                 String command = scanner.nextLine();
@@ -28,6 +28,23 @@ public class RecipeSearch {
 
                 if (command.equals("list")) {
                     recipeList.printList();
+                }
+
+                if (command.equals("find name")) {
+                    System.out.println("Searched word:");
+                    String word = scanner.nextLine();
+                    recipeList.searchByName(word);
+                }
+
+                if (command.equals("find cooking time")) {
+                    int time = Integer.valueOf(scanner.nextLine());
+                    recipeList.findByTime(time);
+                }
+
+                if (command.equals("find ingredient")) {
+                    System.out.println("Ingredient:");
+                    String ingredient = scanner.nextLine();
+                    recipeList.findByIngredients(ingredient);
                 }
             }
         } catch (Exception e) {

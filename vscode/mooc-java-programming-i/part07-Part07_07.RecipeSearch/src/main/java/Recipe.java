@@ -10,7 +10,17 @@ public class Recipe {
         this.time = time;
         this.ingredients = ingredients;
     }
+    public String getName() {
+        return this.name;
+    }
+    
+    public int getTime() {
+        return this.time;
+    }
 
+    public ArrayList<String> getIngredients() {
+        return this.ingredients;
+    }
     @Override
     public String toString() {
         return name + ", " + "cooking time: " + time;
