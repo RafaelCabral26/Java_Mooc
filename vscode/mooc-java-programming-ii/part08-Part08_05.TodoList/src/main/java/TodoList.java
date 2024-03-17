@@ -1,15 +1,30 @@
 import java.util.ArrayList;
 
 public class TodoList {
-    private ArrayList<String> name;
-    private boolean completed;    
+    private ArrayList<Todo> todoList;
 
-    public TodoList(String name) {
-        this.name = new ArrayList<>();
-        this.completed = false;
+    public TodoList() {
+        this.todoList = new ArrayList<>();
     }
 
-    public void compleatTask() {
-        this.completed = true;
+    public void add(String name) {
+        Todo newTodo = new Todo(name);
+        todoList.add(newTodo);
+    }
+
+    public void print() {
+        int index = 1;
+        for (Todo todo : todoList) {
+            System.out.println(index + ": " + todo);
+            index++;
+        }
+    }
+
+    public void remove(int index) {
+        todoList.remove(index - 1);
+    }
+
+    public void compleat(int index) {
+        todoList.get(index).compleatTask();
     }
 }
