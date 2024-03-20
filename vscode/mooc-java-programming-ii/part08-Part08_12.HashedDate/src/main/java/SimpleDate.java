@@ -50,5 +50,8 @@ public class SimpleDate {
 
         return this.year - other.year - yearRemoved;
     }
-
+    @Override
+    public int hashCode() {
+        return (String.valueOf(this.day) + String.valueOf(this.month) + String.valueOf(this.year)).hashCode();
+    }
 }
