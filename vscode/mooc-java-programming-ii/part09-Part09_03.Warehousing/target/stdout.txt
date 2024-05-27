@@ -1,0 +1,1 @@
+Product: beerHistory: [2.0, 7.0]Largest amount of product: 7.0Smallest amount of product: 2.0Average: 4.5
