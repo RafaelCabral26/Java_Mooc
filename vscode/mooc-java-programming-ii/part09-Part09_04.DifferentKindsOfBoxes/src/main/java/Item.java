@@ -1,3 +1,4 @@
+import java.util.Objects;
 
 public class Item {
 
@@ -19,6 +20,30 @@ public class Item {
 
     public int getWeight() {
         return weight;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+
+        if (!(obj instanceof Item)) {
+            return false;
+        }
+
+        Item check = (Item) obj;
+
+        if (check.getName() == this.getName()) {
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 
 }
